@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Task List</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
@@ -17,6 +16,7 @@
             <th>Description</th>
             <th>Completed</th>
             <th>Due Date</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -26,10 +26,18 @@
             <td th:text="${task.description}">Sample Description</td>
             <td th:text="${task.completed ? 'Yes' : 'No'}">No</td>
             <td th:text="${task.dueDate}">2024-12-31T23:59:59</td>
+            <td>
+                <a class="btn btn-primary btn-sm" th:href="@{/tasks/edit/{id}(id=${task.taskId})}">Edit</a>
+                <form th:action="@{/tasks/complete/{id}(id=${task.taskId})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-success btn-sm">Complete</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
     <a class="btn btn-primary" href="/tasks/add">Add New Task</a>
 </div>
+
+<script src="/js/scripts.js"></script>
 </body>
 </html>

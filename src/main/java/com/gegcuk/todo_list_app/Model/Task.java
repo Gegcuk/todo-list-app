@@ -19,7 +19,7 @@ public class Task {
     @Column(nullable = false)
     private LocalDateTime dueDate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     public Long getTaskId() {

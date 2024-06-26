@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Task</title>
+    <title>Edit Task</title>
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
-    <h2 class="mb-4">Add New Task</h2>
-    <form th:action="@{/tasks}" th:object="${task}" method="post" class="needs-validation">
+    <h2 class="mb-4">Edit Task</h2>
+    <form th:action="@{/tasks/update/{id}(id=${task.taskId})}" th:object="${task}" method="post" class="needs-validation">
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" id="title" class="form-control" th:field="*{title}" placeholder="Enter task title" required>
@@ -34,7 +34,7 @@
             <input type="checkbox" id="completed" class="form-check-input" th:field="*{completed}">
             <label for="completed" class="form-check-label">Completed</label>
         </div>
-        <button type="submit" class="btn btn-primary">Add Task</button>
+        <button type="submit" class="btn btn-primary">Save Task</button>
     </form>
 </div>
 
