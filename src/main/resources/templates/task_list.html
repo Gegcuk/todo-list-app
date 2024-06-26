@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Task List</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Completed</th>
+            <th>Due Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.taskId}">1</td>
+            <td th:text="${task.title}">Sample Title</td>
+            <td th:text="${task.description}">Sample Description</td>
+            <td th:text="${task.completed ? 'Yes' : 'No'}">No</td>
+            <td th:text="${task.dueDate}">2024-12-31T23:59:59</td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/tasks/add">Add New Task</a>
+</div>
+</body>
+</html>
